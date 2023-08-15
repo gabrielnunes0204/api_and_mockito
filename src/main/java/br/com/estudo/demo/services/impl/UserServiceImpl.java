@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import br.com.estudo.demo.domain.User;
 import br.com.estudo.demo.repositories.UserRepository;
 import br.com.estudo.demo.services.UserService;
+import br.com.estudo.demo.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -18,6 +19,6 @@ public class UserServiceImpl implements UserService {
 	public User findById(Integer id) {
 		Optional<User> obj = repository.findById(id);
 		
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 }
