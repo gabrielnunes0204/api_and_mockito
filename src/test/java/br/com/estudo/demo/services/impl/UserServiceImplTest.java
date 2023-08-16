@@ -20,6 +20,7 @@ import br.com.estudo.demo.services.exceptions.ObjectNotFoundException;
 @SpringBootTest
 class UserServiceImplTest {
 
+	private static final String OBJETO_NÃO_ENCONTRADO = "Objeto não encontrado";
 	private static final Integer ID = 1;
 	private static final String NAME = "Gabriel";
 	private static final String EMAIL = "gabriel@gmail.com";
@@ -59,12 +60,13 @@ class UserServiceImplTest {
 	
 	@Test
 	void whenFindByIdThenReturnAnObjectNotFoundException() {
-		when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException("Objeto não encontrado"));
+		when(repository.findById(anyInt())).thenThrow(new ObjectNotFoundException(OBJETO_NÃO_ENCONTRADO));
 	
 		try {
 			service.findById(ID);
 		} catch (Exception e) {
 			assertEquals(ObjectNotFoundException.class, e.getClass());
+			assertEquals(OBJETO_NÃO_ENCONTRADO, e.getMessage());
 		}
 	}
 	
