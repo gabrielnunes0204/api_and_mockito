@@ -8,4 +8,5 @@ public interface UserService {
 	User findById(Integer id);
 	java.util.List<User> findAll();
 	User create(UserDTO obj);
+	User update(UserDTO obj);
 }
