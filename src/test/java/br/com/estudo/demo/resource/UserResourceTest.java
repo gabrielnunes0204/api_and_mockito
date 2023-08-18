@@ -29,9 +29,7 @@ import br.com.estudo.demo.services.impl.UserServiceImpl;
 @SpringBootTest
 class UserResourceTest {
 
-	private static final String EMAIL_CADASTRADO = "E-mail já cadastrado no sistema.";
 	private static final int INDEX = 0;
-	private static final String OBJETO_NAO_ENCONTRADO = "Objeto não encontrado";
 	private static final Integer ID = 1;
 	private static final String NAME = "Gabriel";
 	private static final String EMAIL = "gabriel@gmail.com";
