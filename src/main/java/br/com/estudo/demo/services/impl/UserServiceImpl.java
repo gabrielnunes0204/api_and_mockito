@@ -9,7 +9,7 @@ import br.com.estudo.demo.domain.User;
 import br.com.estudo.demo.domain.dto.UserDTO;
 import br.com.estudo.demo.repositories.UserRepository;
 import br.com.estudo.demo.services.UserService;
-import br.com.estudo.demo.services.exceptions.DataIntegratyViolationException;
+import br.com.estudo.demo.services.exceptions.DataIntegrityViolationException;
 import br.com.estudo.demo.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 		Optional<User> user = repository.findByEmail(obj.getEmail());
 		
 		if (user.isPresent() && !user.get().getId().equals(obj.getId())) {
-			throw new DataIntegratyViolationException("E-mail já cadastrado no sistema.");
+			throw new DataIntegrityViolationException("E-mail já cadastrado no sistema.");
 		}
 	}
 }

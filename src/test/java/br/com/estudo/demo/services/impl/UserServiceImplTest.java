@@ -21,7 +21,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import br.com.estudo.demo.domain.User;
 import br.com.estudo.demo.domain.dto.UserDTO;
 import br.com.estudo.demo.repositories.UserRepository;
-import br.com.estudo.demo.services.exceptions.DataIntegratyViolationException;
+import br.com.estudo.demo.services.exceptions.DataIntegrityViolationException;
 import br.com.estudo.demo.services.exceptions.ObjectNotFoundException;
 
 @SpringBootTest
@@ -109,7 +109,7 @@ class UserServiceImplTest {
 	}
 	
 	@Test
-	void whenCreateThenReturnAnDataIntegratyViolationException() {
+	void whenCreateThenReturnAnDataIntegrityViolationException() {
 		when(repository.findByEmail(anyString())).thenReturn(optionalUser);
 		
 		try {
@@ -117,7 +117,7 @@ class UserServiceImplTest {
 			service.create(userDTO);
 			
 		} catch (Exception e) {
-			assertEquals(DataIntegratyViolationException.class, e.getClass());
+			assertEquals(DataIntegrityViolationException.class, e.getClass());
 			assertEquals(EMAIL_CADASTRADO, e.getMessage());
 		}
 	}
@@ -137,7 +137,7 @@ class UserServiceImplTest {
 	}
 	
 	@Test
-	void whenUpdateThenReturnAnDataIntegratyViolationException() {
+	void whenUpdateThenReturnAnDataIntegrityViolationException() {
 		when(repository.findByEmail(anyString())).thenReturn(optionalUser);
 		
 		try {
@@ -145,7 +145,7 @@ class UserServiceImplTest {
 			service.update(userDTO);
 			
 		} catch (Exception e) {
-			assertEquals(DataIntegratyViolationException.class, e.getClass());
+			assertEquals(DataIntegrityViolationException.class, e.getClass());
 			assertEquals(EMAIL_CADASTRADO, e.getMessage());
 		}
 	}
